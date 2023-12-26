@@ -49,7 +49,7 @@ const movieSchema = new mongoose.Schema({
   nameEN: {
     type: String,
     required: true,
-  }
+  },
 }, { versionKey: false, timestamps: true });
 
 module.exports = mongoose.model('movie', movieSchema);

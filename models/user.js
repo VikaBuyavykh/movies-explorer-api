@@ -1,21 +1,37 @@
-const { default: mongoose } = require("mongoose");
+const { default: mongoose } = require('mongoose');
+const { default: isEmail } = require('validator/lib/isEmail');
 
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
-    required: true,
-    unique: true,
+    required: {
+      value: true,
+      message: 'Поле email является обязательным',
     },
+    unique: true,
+    validate: {
+      validator(v) {
+        return isEmail(v);
+      },
+      message: (props) => `${props.value} is not a valid email`,
+    },
+  },
   password: {
     type: String,
-    required: true,
+    required: {
+      value: true,
+      message: 'Поле password является обязательным',
+    },
     select: false,
   },
   name: {
     type: String,
     minlength: 2,
     maxlength: 30,
-    required: true,
+    required: {
+      value: true,
+      message: 'Поле name является обязательным',
+    },
   },
 }, { versionKey: false, timestamps: true });
 
