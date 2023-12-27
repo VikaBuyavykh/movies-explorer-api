@@ -5,6 +5,6 @@
 
 ## Ссылки на проект
 
-IP 
+IP 158.160.41.97
 
-Backend 
+Backend api.buyavykh-diploma.nomoredomainsmonster.ru
