@@ -63,6 +63,9 @@ const updateUser = async (req, res, next) => {
       return res.status(200).send({ email, name });
     }
   } catch (error) {
+    if (error.code === MONGO_DUPLICATE_ERROR_CODE) {
+      return next(new ConflictError('Пользователь с таким email уже существует'));
+    }
     if (error instanceof CastError) {
       return next(new BadRequestError('Переданы некорректные данные'));
     }

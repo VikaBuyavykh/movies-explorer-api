@@ -1,4 +1,5 @@
 const { default: mongoose } = require('mongoose');
+const { urlRegex } = require('../utils/regex');
 
 const movieSchema = new mongoose.Schema({
   country: {
@@ -24,14 +25,32 @@ const movieSchema = new mongoose.Schema({
   image: {
     type: String,
     required: true,
+    validate: {
+      validator(v) {
+        return urlRegex.test(v);
+      },
+      message: (props) => `${props.value} is not a valid image`,
+    },
   },
   trailerLink: {
     type: String,
     required: true,
+    validate: {
+      validator(v) {
+        return urlRegex.test(v);
+      },
+      message: (props) => `${props.value} is not a valid trailer-link`,
+    },
   },
   thumbnail: {
     type: String,
     required: true,
+    validate: {
+      validator(v) {
+        return urlRegex.test(v);
+      },
+      message: (props) => `${props.value} is not a valid thumbnail`,
+    },
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,

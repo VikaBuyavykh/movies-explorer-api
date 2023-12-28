@@ -18,21 +18,20 @@ const getMovies = async (req, res, next) => {
 const createMovie = async (req, res, next) => {
   try {
     const {
-      country, director, duration, year, description, image, trailerLink, id, nameRU, nameEN,
+      country, director, duration, year, description, image,
+      trailerLink, thumbnail, movieId, nameRU, nameEN,
     } = req.body;
-    const imageUrl = image.url;
-    const thumbnail = image.formats.thumbnail.url;
     const newMovie = await new Movie({
       country,
       director,
       duration,
       year,
       description,
-      image: imageUrl,
+      image,
       trailerLink,
       thumbnail,
       owner: req.user._id,
-      movieId: id,
+      movieId,
       nameRU,
       nameEN,
     });
