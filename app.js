@@ -6,13 +6,10 @@ const router = require('./routes');
 const handleError = require('./middlewares/handleError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { PORT, MONGO_URL } = require('./config');
-const cors = require('cors');
 
 const app = express();
 
 mongoose.connect(MONGO_URL);
-
-app.use(cors());
 
 app.use(json());
 
