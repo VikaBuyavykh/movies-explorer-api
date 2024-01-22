@@ -14,9 +14,9 @@ mongoose.connect(MONGO_URL);
 
 app.use(json());
 
-app.use(handleCors);
-
 app.use(requestLogger);
+
+app.use(handleCors);
 
 app.use(router);
 
