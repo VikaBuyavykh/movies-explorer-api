@@ -10,9 +10,9 @@ const cors = require('cors');
 
 const app = express();
 
-app.use(cors());
-
 mongoose.connect(MONGO_URL);
+
+app.use(cors());
 
 app.use(json());
 
