@@ -16,8 +16,6 @@ app.use(json());
 
 app.use(requestLogger);
 
-app.use(handleCors);
-
 app.use(router);
 
 app.use(errorLogger);
@@ -25,6 +23,8 @@ app.use(errorLogger);
 app.use(errors());
 
 app.use(handleError);
+
+app.use(handleCors);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
