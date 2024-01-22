@@ -5,14 +5,20 @@ const { errors } = require('celebrate');
 const router = require('./routes');
 const handleError = require('./middlewares/handleError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const handleCors = require('./middlewares/cors');
 const { PORT, MONGO_URL } = require('./config');
+
+const allowedCors = ['https://buyavykh-diploma.nomoredomainsmonster.ru', 'http://buyavykh-diploma.nomoredomainsmonster.ru', 'http://localhost:3000'];
 
 const app = express();
 
 mongoose.connect(MONGO_URL);
-
-app.use(handleCors);
+app.use(function(req, res, next) {
+  const { origin } = req.headers;
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+  next();
+});
 
 app.use(json());
 
