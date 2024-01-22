@@ -4,15 +4,15 @@ const { default: mongoose } = require('mongoose');
 const { errors } = require('celebrate');
 const router = require('./routes');
 const handleError = require('./middlewares/handleError');
-const handleCors = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const handleCors = require('./middlewares/cors');
 const { PORT, MONGO_URL } = require('./config');
 
 const app = express();
 
 mongoose.connect(MONGO_URL);
 
-app.use(handleCors());
+app.use(handleCors);
 
 app.use(json());
 
