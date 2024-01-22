@@ -12,9 +12,9 @@ const app = express();
 
 mongoose.connect(MONGO_URL);
 
-app.use(handleCors);
-
 app.use(json());
+
+app.use(handleCors);
 
 app.use(requestLogger);
 
