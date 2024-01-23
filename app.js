@@ -9,13 +9,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { PORT, MONGO_URL } = require('./config');
 
 const app = express();
-app.use(
-  cors({
-    origin: ['https://buyavykh-diploma.nomoredomainsmonster.ru', 'http://buyavykh-diploma.nomoredomainsmonster.ru', 'http://localhost:3000'],
-    credentials: true,
-    maxAge: 30,
-  })
-);
+app.use(cors());
 
 mongoose.connect(MONGO_URL);
 
